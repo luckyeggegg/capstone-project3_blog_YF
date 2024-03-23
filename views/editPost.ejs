@@ -1,0 +1,20 @@
+<%- include("partials/header.ejs") %>
+
+
+<section class="new-edit">
+    <div id="modifyContainer">
+        <form class="newPostForm" action="/posts/updatePost/<%= articleToUpdate.articleId %>" method="POST">
+        <h2>Update your post</h2>
+        <input type="text" name="title" value="<%= articleToUpdate.articleTitle %>" required>
+        <textarea name="content" rows="10" required><%= articleToUpdate.articleContent %></textarea>
+        <input type="text" name="author"  value="<%= articleToUpdate.articleAuthor %>" required>
+        <div class="buttonForm">
+          <button type="submit" class="btn btn-primary me-3">Update</button>
+          <a class="btn btn-secondary" href="/">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+
+<%- include("partials/footer.ejs") %>

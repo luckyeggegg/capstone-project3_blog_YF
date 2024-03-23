@@ -1,0 +1,35 @@
+<!-- Step 3 Add Header -->
+<%- include("partials/header.ejs") %>
+
+<section class="add-post">
+  <div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="/assets/book.jpg" alt="book" width="300" height="200">
+    <h1 class="display-5 fw-bold text-body-emphasis">Welcome to YF's Blog!</h1>
+    <div class="col-lg mx-auto">
+      <p class="lead mb-4">Please share your points and views here.</p>
+    </div>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <a href="/newPost">
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Create your articles</button>
+      </a>  
+    </div>
+  </div>
+</section>
+
+<section class="display-post">
+  <% if (postList.length > 0) { %>
+   <% postList.forEach(article => { %>
+      <div class="post-gallery">
+        <h2><%= article.articleTitle %></h2>
+        <p>Posted by: <%= article.articleAuthor %></p>
+        <p>Posted time: <%= article.articleTime %></p>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <h2>No post right now.</h2>
+  <% } %> 
+</section>
+
+
+
+<%- include("partials/footer.ejs") %>

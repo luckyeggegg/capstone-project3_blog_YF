@@ -1,0 +1,62 @@
+<%- include("partials/header.ejs") %>
+
+<section class="add-post">
+  <div class="px-4 py-5 my-3 text-center">
+    <!-- <img class="d-block mx-auto mb-4" src="/assets/book.jpg" alt="book" width="300" height="200"> -->
+    <div id="carouselAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/assets/book_resized.jpg" alt="book">
+        </div>
+        <div class="carousel-item">
+          <img src="/assets/computer_resized.jpg" alt="computer">
+        </div>
+        <div class="carousel-item">
+          <img src="/assets/game-controller_resized.jpg" alt="game-controller">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselAutoplaying" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselAutoplaying" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <h1 class="display-5 fw-bold text-body-emphasis">Welcome to YF's Blog!</h1>
+    <div class="col-lg mx-auto">
+      <p class="lead mb-4">Please share your points and views here.</p>
+    </div>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <a href="/newPost">
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Create your articles</button>
+      </a>  
+    </div>
+  </div>
+</section>
+
+<section class="display-post">
+  <% if (postList.length > 0) { %>
+   <% postList.forEach(article => { %>
+      <div class="post-gallery">
+        <h2><%= article.articleTitle %></h2>
+        <p style="margin-bottom: 5px;">Posted by: <%= article.articleAuthor %></p>
+        <p style="margin-bottom: 1.5rem;">Posted time: <%= article.articleTime %></p>
+        <div class="buttonForm mt-5">
+          <form action="/editPost/<%= article.articleId %>" method="get">
+            <button type="submit" class="btn btn-success me-3 btn-custom-size">Edit</button>
+          </form>
+
+          <button class="btn btn-danger btn-custom-size delete-button" data-post-id="<%= article.articleId %>">Delete</button>
+        </div>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <h2>No post right now.</h2>
+  <% } %> 
+</section>
+
+
+
+<%- include("partials/footer.ejs") %>
