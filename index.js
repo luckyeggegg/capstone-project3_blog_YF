@@ -7,6 +7,7 @@ const port = process.env.PORT || 3000; // Use the environment variable if availa
 let articleList = [];   // a list for articles posted
 let nextPostId = 1;
 
+app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public")) // state the default static files' directory
 
