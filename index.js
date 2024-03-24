@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000; // Use the environment variable if available
 
 let articleList = [];   // a list for articles posted
 let nextPostId = 1;
