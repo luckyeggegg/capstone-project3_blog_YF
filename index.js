@@ -1,5 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 3000; // Use the environment variable if available
@@ -7,7 +12,8 @@ const port = process.env.PORT || 3000; // Use the environment variable if availa
 let articleList = [];   // a list for articles posted
 let nextPostId = 1;
 
-app.set("view engine", "ejs");
+app.set("view engine", "ejs");  // Set the view engine to ejs
+app.set('views', join(__dirname, 'views')); // Set the views directory
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public")) // state the default static files' directory
 
