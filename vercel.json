@@ -12,5 +12,5 @@
         "dest": "index.js"
       }
     ],
-    "rewrites": [{ "source": "/public/(.*)", "destination": null }]
+    "rewrites": [{ "source": "/public/(.*)", "destination": "/non-existing-route"}]
  }
